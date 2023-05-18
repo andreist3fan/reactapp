@@ -1,7 +1,13 @@
 .anchorStyle {
     padding-left: 10%;
-  text-decoration: none;
+    text-decoration: none;
     color: #000;
 }
 
-  
+.text_activated{
+  color: red;
+  background-color: #0000001b;
+  font-size: 60px;
+  transition: 0.5s;
+}
+

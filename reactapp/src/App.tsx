@@ -2,11 +2,15 @@
 //import ListGroup from "./components/ListGroup";
 import NavBar from "./components/NavBar";
 import Page1 from "./components/Page1";
+import Projects from "./components/Projects";
+import Fodder from "./components/Fodder";
 function App() {
   return (
-    <body style={{ backgroundColor: "#2D2727" }}>
+    <body>
       <NavBar />
       <Page1 />
+      <Fodder />
+      <Projects />
     </body>
   );
 }

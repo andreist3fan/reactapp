@@ -15,17 +15,11 @@ function Page1() {
       <div>
         <h1
           onMouseEnter={(event) => {
-            event.currentTarget.style.color = "red";
-            event.currentTarget.style.backgroundColor = "#0000001b";
-            event.currentTarget.style.fontSize = "60px";
-            event.currentTarget.style.transition = "font-size 1s";
+            event.currentTarget.classList.add(styles.text_activated);
             setShowAnchor(true);
           }}
           onMouseLeave={(event) => {
-            event.currentTarget.style.color = "black";
-            event.currentTarget.style.backgroundColor = "transparent";
-            event.currentTarget.style.fontSize = "40px";
-            event.currentTarget.style.transition = "font-size 1s";
+            event.currentTarget.classList.remove(styles.text_activated);
             setShowAnchor(false);
           }}
         >

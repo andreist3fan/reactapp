@@ -1,4 +1,5 @@
 function NavBar() {
+  const scrollToElem = document.getElementById("projects");
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary">
       <div className="container-fluid">
@@ -24,7 +25,13 @@ function NavBar() {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">
+              <a
+                className="nav-link"
+                onClick={() => {
+                  if (scrollToElem)
+                    scrollToElem.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 My projects
               </a>
             </li>
