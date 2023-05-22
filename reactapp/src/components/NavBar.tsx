@@ -26,7 +26,7 @@ function NavBar() {
             </li>
             <li className="nav-item">
               <a
-                className="nav-link"
+                className="nav-link active"
                 onClick={() => {
                   if (scrollToElem)
                     scrollToElem.scrollIntoView({ behavior: "smooth" });

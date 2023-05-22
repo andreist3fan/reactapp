@@ -1,21 +1,36 @@
 .flexbox {
     
-    margin: 0 auto;
+    margin: 1%;
     width: 100%;
-    max-width: 300px;
+    width: 300px;
+    height: 250px;
     padding: 0 20px;
     border-radius: 5%;
     background-color: #0000001b;
-    box-sizing: border-box; 
+    box-sizing: border-box;
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.2s;
+  }
+  .flexbox:hover{
+    background-color: #0000002b;
+    width: 400px;
+    height: 300px;
+    transition:cubic-bezier(0.075, 0.82, 0.165, 1) 0.2s;
   }
 
   .parent_container {
     display: flex;
     flex-flow: row wrap;
-    
+    justify-content:space-evenly;
     margin: 0 auto;
-    padding: 20px;
+    padding: 0 20px;
     background-color: #f2f2f2;
+  }
+
+  .image{
+    width: 95%;
+    align-self: center;
+    border-radius: 5%;
+    object-fit: cover;
   }
   
   
