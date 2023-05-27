@@ -8,6 +8,7 @@ import "bootstrap/dist/css/bootstrap.css";
 //     <App />
 //   </React.StrictMode>,
 // )
+//
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <AppRouter />
 );
