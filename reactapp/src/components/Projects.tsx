@@ -1,6 +1,7 @@
 import styles from "./css/Projects.module.css";
 
 function Projects() {
+  const baseAddress = `${window.location.protocol}//${window.location.host}`;
   const renderCards = () => {
     const cards = [];
 
@@ -11,19 +12,7 @@ function Projects() {
           className={styles.flexbox}
           key={i}
           onClick={() => {
-            if (
-              window.location.href.lastIndexOf("/") ===
-              window.location.href.length - 1
-            )
-              window.location.href = window.location.href + "/" + (i + 1);
-            else
-              window.location.href =
-                window.location.href.substring(
-                  0,
-                  window.location.href.lastIndexOf("/") + 1
-                ) +
-                (i + 1);
-            console.log(window.location.href);
+            window.location.href = `${baseAddress}/projects/${i}`;
           }}
         >
           <img

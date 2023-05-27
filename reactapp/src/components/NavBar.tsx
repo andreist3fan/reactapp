@@ -1,7 +1,13 @@
+import styles from "./css/Navbar.module.css";
 function NavBar() {
+  //TODO: contents of scrollToElem get lost when the page is refreshed
   const scrollToElem = document.getElementById("projects");
+  const baseAddress = `${window.location.protocol}//${window.location.host}`;
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav
+      className="navbar navbar-expand-lg bd-navbar sticky-top"
+      id={styles.fullColorDiv}
+    >
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           AS
@@ -20,7 +26,11 @@ function NavBar() {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <a
+                className="nav-link active"
+                aria-current="page"
+                href={baseAddress}
+              >
                 Home
               </a>
             </li>
