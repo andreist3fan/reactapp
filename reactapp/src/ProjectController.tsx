@@ -46,4 +46,32 @@ const fetchProjects = () => {
   return projects;
 };
 
-export { uploadProject, fetchProjects };
+const fetchProjectById = (id: number) => {
+  console.log("fetchProjectById:" + id);
+  const projectsRef = ref(database, "projects");
+  let search: Project | null = null;
+  onValue(
+    projectsRef,
+    (snapshot) => {
+      const projectsData = snapshot.val();
+
+      if (projectsData) {
+        Object.keys(projectsData).forEach((key) => {
+          const project = projectsData[key];
+
+          console.log(typeof project.id, typeof id);
+          if (project.id == id) {
+            search = project;
+          }
+        });
+      }
+    },
+    (error) => {
+      console.error("Error fetching projects:", error);
+    }
+  );
+  console.log("Searched for id:" + id + " and found:" + search);
+  return search;
+};
+
+export { uploadProject, fetchProjects, fetchProjectById };

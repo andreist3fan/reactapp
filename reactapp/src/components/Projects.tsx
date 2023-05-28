@@ -45,8 +45,10 @@ function Projects() {
         //console.log("shortPolling");
         // eslint-disable-next-line react-hooks/exhaustive-deps
         temp_cards = renderCards();
-        //wait 1 second
-        await new Promise((r) => setTimeout(r, 2000));
+
+        if (temp_cards.length !== 0)
+          await new Promise((r) => setTimeout(r, 10000));
+        else await new Promise((r) => setTimeout(r, 200));
       }
     };
     shortPolling();
