@@ -1,7 +1,6 @@
 import styles from "./css/Navbar.module.css";
 function NavBar() {
   //TODO: contents of scrollToElem get lost when the page is refreshed
-  const scrollToElem = document.getElementById("projects");
   const baseAddress = `${window.location.protocol}//${window.location.host}`;
   return (
     <nav
@@ -37,10 +36,11 @@ function NavBar() {
             <li className="nav-item">
               <a
                 className="nav-link active"
-                onClick={() => {
-                  if (scrollToElem)
-                    scrollToElem.scrollIntoView({ behavior: "smooth" });
-                }}
+                // onClick={() => {
+                //   if (scrollToElem)
+                //     scrollToElem.scrollIntoView({ behavior: "smooth" });
+                // }}
+                href="#projects"
               >
                 My projects
               </a>

@@ -1,5 +1,3 @@
-import { ref, push } from "firebase/database";
-import database from "../firebase";
 export class Project {
   id: number;
   name: string;
@@ -12,19 +10,29 @@ export class Project {
     this.images = images;
   }
 
-  add_image(image: string) {
-    this.images.push(image);
-  }
+  // add_image(image: string) {
+  //   this.images.push(image);
+  // }
 
-  set_name(name: string) {
-    this.name = name;
-  }
+  // set_name(name: string) {
+  //   this.name = name;
+  // }
 
-  set_description(description: string) {
-    this.description = description;
-  }
+  // set_description(description: string) {
+  //   this.description = description;
+  // }
 
-  get_id() {
-    return this.id;
-  }
+  // get_id() {
+  //   return this.id;
+  // }
+
+  // data() {
+  //   const projectObject = {
+  //     id: this.id,
+  //     name: this.name,
+  //     description: this.description,
+  //     images: this.images,
+  //   };
+  //   return projectObject;
+  // }
 }
