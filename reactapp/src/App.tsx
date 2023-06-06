@@ -3,7 +3,6 @@
 import NavBar from "./components/NavBar";
 import Page1 from "./components/Page1";
 import Projects from "./components/Projects";
-import Fodder from "./components/Fodder";
 import { Project } from "./objects/Project";
 import { uploadProject } from "./ProjectController";
 function App() {
@@ -26,7 +25,6 @@ function App() {
         >
           press
         </button>
-        <Fodder />
         <Projects />
       </body>
     </>

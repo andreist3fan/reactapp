@@ -25,17 +25,34 @@ function Article() {
     );
   };
   let article = renderArticle();
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     for (let i = 0; i < 10; i++) {
+  //       const fetchedProject = fetchProjectById(no);
+  //       if (fetchedProject !== null) {
+  //         setProject(fetchedProject);
+  //         return;
+  //       }
+  //       await new Promise((r) => setTimeout(r, 30));
+  //     }
+  //     if (project.name === "Loading...")
+  //       setProject(
+  //         new Project(
+  //           0,
+  //           "Project Not Found",
+  //           "The project you are searching for doesn't exist. Try again later.",
+  //           []
+  //         )
+  //       );
+  //   };
+  //   fetchData();
+
   useEffect(() => {
     const fetchData = async () => {
-      for (let i = 0; i < 10; i++) {
-        const fetchedProject = await fetchProjectById(no);
-        if (fetchedProject !== null) {
-          setProject(fetchedProject);
-          return;
-        }
-        await new Promise((r) => setTimeout(r, 20));
-      }
-      if (project.name === "Loading...")
+      const fetchedProject = await fetchProjectById(no);
+      if (fetchedProject !== null) {
+        setProject(fetchedProject);
+      } else {
         setProject(
           new Project(
             0,
@@ -44,7 +61,9 @@ function Article() {
             []
           )
         );
+      }
     };
+
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
     article = renderArticle();

@@ -7,7 +7,8 @@
 .text_activated{
   color: red;
   background-color: #0000001b;
-  font-size: 60px;
+  font-size: 5vh;
+  word-wrap:normal;
   transition: 0.5s;
 }
 

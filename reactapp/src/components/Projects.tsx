@@ -16,7 +16,7 @@ function Projects() {
             className={styles.flexbox}
             key={projects[i].id}
             onClick={() => {
-              window.location.href = `${baseAddress}/projects/${i}`;
+              window.location.href = `${baseAddress}/projects/${i + 1}`;
             }}
           >
             <img
@@ -25,7 +25,7 @@ function Projects() {
               alt={`Project ${i + 1}`}
             />
             <h4>{projects[i].name}</h4>
-            <p>{projects[i].description}</p>
+            <p className={styles.description}>{projects[i].description}</p>
           </div>
         );
       }
@@ -35,20 +35,23 @@ function Projects() {
   useEffect(() => {
     const fetchData = async () => {
       const fetchedProjects = await fetchProjects();
-      setProjects(fetchedProjects);
+      if (fetchedProjects !== null) setProjects(fetchedProjects);
+      else
+        setProjects([
+          new Project(0, "No projects yet :(", "Try again later", []),
+        ]);
     };
 
     const shortPolling = async () => {
       // eslint-disable-next-line no-constant-condition
       while (true) {
         fetchData();
-        //console.log("shortPolling");
         // eslint-disable-next-line react-hooks/exhaustive-deps
         temp_cards = renderCards();
 
         if (temp_cards.length !== 0)
           await new Promise((r) => setTimeout(r, 10000));
-        else await new Promise((r) => setTimeout(r, 200));
+        else await new Promise((r) => setTimeout(r, 1000));
       }
     };
     shortPolling();
