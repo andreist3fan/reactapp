@@ -20,7 +20,7 @@ function Article() {
         <h1>{project.name}</h1>
         <h5>{project.description}</h5>
         <p></p>
-        <img src="https://picsum.photos/200/300" alt="random" />
+        <img src={project.images[0]} alt="random" />
       </>
     );
   };

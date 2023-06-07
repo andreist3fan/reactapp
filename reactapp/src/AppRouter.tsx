@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import App from "./App";
 import NotFound from "./components/NotFound";
 import Article from "./components/Article";
+import ImageSelect from "./components/ImageSelect";
+import AddArticle from "./components/addArticle";
 const AppRouter: React.FC = () => {
   return (
     <Router>
@@ -9,6 +11,8 @@ const AppRouter: React.FC = () => {
         <Route path="/" element={<App />} />
         <Route path="*" element={<NotFound />} />
         <Route path="/projects/:id" element={<Article />} />
+        <Route path="/img" element={<ImageSelect />} />
+        <Route path="/addArticle" element={<AddArticle />} />
       </Routes>
     </Router>
   );

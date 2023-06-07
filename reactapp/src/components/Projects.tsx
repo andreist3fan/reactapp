@@ -10,19 +10,20 @@ function Projects() {
     const cards = [];
     if (projects.length !== 0) {
       for (let i = 0; i < projects.length; i++) {
-        const path = (i + 150).toString();
         cards.push(
           <div
             className={styles.flexbox}
             key={projects[i].id}
             onClick={() => {
-              window.location.href = `${baseAddress}/projects/${i + 1}`;
+              window.location.href = `${baseAddress}/projects/${projects[i].id}`;
             }}
           >
             <img
               className={styles.image}
-              src={"https://picsum.photos/250/" + path}
+              src={projects[i].images[0]}
               alt={`Project ${i + 1}`}
+              width="150"
+              height="150"
             />
             <h4>{projects[i].name}</h4>
             <p className={styles.description}>{projects[i].description}</p>
@@ -51,7 +52,7 @@ function Projects() {
 
         if (temp_cards.length !== 0)
           await new Promise((r) => setTimeout(r, 10000));
-        else await new Promise((r) => setTimeout(r, 1000));
+        else await new Promise((r) => setTimeout(r, 5000));
       }
     };
     shortPolling();

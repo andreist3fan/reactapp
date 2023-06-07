@@ -11,20 +11,6 @@ function App() {
       <body>
         <NavBar />
         <Page1 />
-        <button
-          onClick={() => {
-            console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
-            const myProject = new Project(
-              1,
-              "My Project",
-              "This is my project description",
-              ["image1.jpg", "image2.jpg"]
-            );
-            uploadProject(myProject);
-          }}
-        >
-          press
-        </button>
         <Projects />
       </body>
     </>
