@@ -1,14 +1,35 @@
 .anchorStyle {
     padding-left: 10%;
     text-decoration: none;
-    color: #000;
+    color: #fff;
+    font-size: min(5vw,5vh);
+
 }
 
 .text_activated{
   color: red;
   background-color: #0000001b;
-  font-size: 5vh;
-  word-wrap:normal;
+
+}
+
+.background{
+  background-color: rgb(13, 17, 35);
+  color: aliceblue;
+  
+}
+.hello{
+  font-size: min(6.5vw,6.5vh);
+}
+.hello:hover{
+  /* font-size: 8vh;
+  word-wrap:normal; */
   transition: 0.5s;
 }
+
+.anchors{
+  transition: opacity 0.3s ease;
+}
+
+
+
 
