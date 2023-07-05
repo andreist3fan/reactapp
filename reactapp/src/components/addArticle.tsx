@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Project } from "../objects/Project";
-import { uploadProject, fetchProjects } from "../ProjectController";
+import { uploadProject } from "../ProjectController";
+
 function AddArticle() {
   const [projectsLength, setProjectLength] = useState(0);
   const [success, setSuccess] = useState(false);
@@ -10,41 +11,30 @@ function AddArticle() {
     const file = event.target.files[0];
     const reader = new FileReader();
 
-    reader.onload = (e) => {
+    reader.onload = async (e) => {
       if (e.target !== null) {
         const imageDataURL = e.target.result?.toString();
-        console.log(imageDataURL);
+        console.log(imageDataURL?.substring(0, 10));
         setSelectedImage(imageDataURL);
       }
     };
 
     reader.readAsDataURL(file);
+    console.log(selectedImage?.substring(0, 10));
   };
-  useEffect(() => {
-    const fetchData = async () => {
-      const fetchedProjects = await fetchProjects();
-      if (fetchedProjects !== null) setProjectLength(fetchedProjects.length);
-      else setProjectLength(0);
-    };
 
-    const shortPolling = async () => {
-      // eslint-disable-next-line no-constant-condition
-      while (true) {
-        fetchData();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        await new Promise((r) => setTimeout(r, 10000));
-      }
-    };
+  useEffect(() => {
     const uploaded = async () => {
       setSuccess(true);
+      setProjectLength(projectsLength + 1);
       await new Promise((r) => setTimeout(r, 10000));
       setSuccess(false);
     };
-    shortPolling();
+
     const form = document.getElementById("projectForm");
     if (form !== null) {
-      form.addEventListener("submit", (event) => {
-        event.preventDefault(); // Prevent the default form submission
+      const handleSubmit = (event) => {
+        event.preventDefault();
         const title = document.getElementsByName(
           "title"
         )[0] as HTMLInputElement;
@@ -52,20 +42,24 @@ function AddArticle() {
           "description"
         )[0] as HTMLInputElement;
 
-        // Process the form data (e.g., send it to the server, validate, etc.)
         const myProject = new Project(
           projectsLength + 1,
           title.value,
           description.value,
-          selectedImage ? [selectedImage] : [""]
+          [selectedImage || ""]
         );
-        console.log(selectedImage);
+
         uploadProject(myProject);
-        console.log(selectedImage);
         uploaded();
-      });
+      };
+
+      form.addEventListener("submit", handleSubmit);
+
+      return () => {
+        form.removeEventListener("submit", handleSubmit);
+      };
     }
-  }, []);
+  }, [selectedImage, projectsLength]);
 
   return (
     <>
@@ -92,20 +86,6 @@ function AddArticle() {
         </form>
       </div>
       {success && <p>Project added successfully</p>}
-      {/* <button
-        onClick={() => {
-          console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAA");
-          const myProject = new Project(
-            projectsLength + 1,
-            ,
-            "This is my project description",
-            [typeof(selectedImage)==="string"?selectedImage:""]
-          );
-          uploadProject(myProject);
-        }}
-      >
-        add project
-      </button> */}
     </>
   );
 }

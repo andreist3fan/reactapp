@@ -9,8 +9,8 @@ const ImageSelect = () => {
     reader.onload = (e) => {
       if (e.target !== null) {
         const imageDataURL = e.target.result?.toString();
-        console.log(imageDataURL);
         setSelectedImage(imageDataURL);
+        console.log(imageDataURL);
       }
     };
 

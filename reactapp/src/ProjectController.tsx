@@ -7,7 +7,7 @@ const uploadProject = (project: Project) => {
 
   push(projectsRef, project)
     .then((response) => {
-      console.log("Project uploaded successfully:" + response);
+      console.log("Project uploaded successfully:" + project);
     })
     .catch((error) => {
       console.error("Error uploading project:", error);

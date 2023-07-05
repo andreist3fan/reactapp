@@ -7,20 +7,39 @@ import { Project } from "../objects/Project";
 import { fetchProjectById } from "../ProjectController";
 import styles from "./css/Article.module.css";
 import NavBar from "./NavBar";
+import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
+import { faGear } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Article() {
   const { id } = useParams();
+  const [rotationAngle, setRotationAngle] = useState(0);
   console.log(id);
+  const iconMap: Record<string, IconDefinition> = {
+    gear: faGear,
+  };
   const no = parseInt(id?.toString() || "0");
   const [project, setProject] = useState<Project>(
-    new Project(0, "Loading...", "", [])
+    new Project(0, "Loading...", "", ["gear"])
   );
+
   const renderArticle = () => {
     return (
       <>
         <h1>{project.name}</h1>
         <h5>{project.description}</h5>
         <p></p>
-        <img src={project.images[0]} alt="random" />
+        {project.images[0] == "gear" ? (
+          <FontAwesomeIcon
+            icon={faGear}
+            style={{
+              transform: `rotate(${rotationAngle}deg)`,
+              width: "80px",
+              height: "80px",
+            }}
+          />
+        ) : (
+          <img src={project.images[0]} />
+        )}
       </>
     );
   };
@@ -48,8 +67,13 @@ function Article() {
   //   fetchData();
 
   useEffect(() => {
+    const rotationInterval = setInterval(() => {
+      setRotationAngle((prevAngle) => prevAngle + 1);
+    }, 10);
+
     const fetchData = async () => {
       const fetchedProject = await fetchProjectById(no);
+      clearInterval(rotationInterval);
       if (fetchedProject !== null) {
         setProject(fetchedProject);
       } else {
