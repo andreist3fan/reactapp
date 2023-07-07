@@ -5,23 +5,20 @@ import { Project } from "../objects/Project";
 
 function Projects() {
   const baseAddress = `${window.location.protocol}//${window.location.host}`;
-  const [projects, setProjects] = useState<Project[]>([]);
   const [cardsBox, setCardsBox] = useState<JSX.Element[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const fetchedProjects = await fetchProjects();
+      let fetchedProjects = await fetchProjects();
       console.log(fetchedProjects);
-      if (fetchedProjects !== null) {
-        setProjects(fetchedProjects);
-        const card = renderCards(fetchedProjects);
-        console.log(card);
-        setCardsBox(card);
-      } else {
-        setProjects([
+      if (fetchedProjects === null) {
+        fetchedProjects = [
           new Project(0, "No projects yet :(", "Try again later", []),
-        ]);
+        ];
       }
+      const card = renderCards(fetchedProjects);
+      console.log(card);
+      setCardsBox(card);
     };
 
     fetchData();

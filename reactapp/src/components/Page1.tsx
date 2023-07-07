@@ -12,7 +12,7 @@ function Page1() {
   const [showAnchor, setShowAnchor] = useState(false);
   const [hello, setHello] = useState("Hi, I'm ");
   // const [cursor, setCursor] = useState("_");
-  const things = ["Andrei", "a CSE student", "from Romania", "Andrei"];
+  const things = ["Andrei", "a CSE student", "from Romania", "Andrei."];
   let intervalCursor: NodeJS.Timeout | undefined;
   // const incrementctr = () => {
   //   setPageVisits(pageVisits + 1);
@@ -62,41 +62,56 @@ function Page1() {
   }, []); //<- dependency array, when something here is updated, then the method is called
   // empty array means method is called whenever ANYTHING in the component is updated.
   return (
-    <>
+    <div>
       <div
-        className={styles.background}
+        className={styles.hello}
         onMouseEnter={() => {
           setShowAnchor(true);
         }}
+      >
+        {hello}
+      </div>
+
+      <div
         onMouseLeave={() => {
           setShowAnchor(false);
         }}
+        className={
+          styles.stuff + " " + `${showAnchor ? styles.visible : styles.hidden}`
+        }
       >
-        <div className={styles.hello}>{hello}</div>
+        <h3>My stuff!</h3>
+        <h2>
+          <a
+            id={styles.facebook}
+            href="https://www.google.com"
+            className={styles.anchorStyle}
+          >
+            <FontAwesomeIcon icon={faFacebook} />
+          </a>
 
-        {showAnchor && (
-          <>
-            <h3>My stuff!</h3>
-            <h2 className={styles.anchors}>
-              <a href="https://www.google.com" className={styles.anchorStyle}>
-                <FontAwesomeIcon icon={faFacebook} />
-              </a>
+          <a
+            id={styles.youtube}
+            href="https://www.youtube.com"
+            className={styles.anchorStyle}
+          >
+            <FontAwesomeIcon icon={faYoutube} />
+          </a>
 
-              <a href="https://www.youtube.com" className={styles.anchorStyle}>
-                <FontAwesomeIcon icon={faYoutube} />
-              </a>
+          <a
+            id={styles.github}
+            href="https://www.github.com"
+            className={styles.anchorStyle}
+          >
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
+        </h2>
+      </div>
 
-              <a href="https://www.github.com" className={styles.anchorStyle}>
-                <FontAwesomeIcon icon={faGithub} />
-              </a>
-            </h2>
-          </>
-        )}
-        {/* <p>Page visits: {pageVisits}</p>
+      {/* <p>Page visits: {pageVisits}</p>
         <button onClick={() => incrementctr}>Increment</button>
         {pageVisits == 0 ? <p>bruh</p> : <p>wow updated!!</p>} */}
-      </div>
-    </>
+    </div>
   );
 }
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Project } from "../objects/Project";
-import { uploadProject } from "../ProjectController";
+import { fetchProjects, uploadProject } from "../ProjectController";
 
 function AddArticle() {
   const [projectsLength, setProjectLength] = useState(0);
@@ -24,6 +24,11 @@ function AddArticle() {
   };
 
   useEffect(() => {
+    const setLength = async () => {
+      const proj = await fetchProjects();
+      if (proj != undefined) setProjectLength(proj?.length | 0);
+    };
+    setLength();
     const uploaded = async () => {
       setSuccess(true);
       setProjectLength(projectsLength + 1);
@@ -35,6 +40,7 @@ function AddArticle() {
     if (form !== null) {
       const handleSubmit = (event) => {
         event.preventDefault();
+
         const title = document.getElementsByName(
           "title"
         )[0] as HTMLInputElement;

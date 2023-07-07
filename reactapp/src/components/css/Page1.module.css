@@ -6,22 +6,25 @@
 
 }
 
-.text_activated{
-  color: red;
-  background-color: #0000001b;
+#youtube:hover{
+  color: #ff0000;
+}
+#github:hover{
+  color: #ffffff79;
 
 }
-
-.background{
-  background-color: rgb(13, 17, 35);
-  color: aliceblue;
-  
+#facebook:hover{
+  color:rgb(66, 66, 250);
 }
+
+
+
 .hello{
   font-size: min(6.5vw,6.5vh);
+  font-family: monospace;
 }
 .hello:hover{
-  /* font-size: 8vh;
+   /* font-size: 8vh;
   word-wrap:normal; */
   transition: 0.5s;
 }
@@ -29,7 +32,29 @@
 .anchors{
   transition: opacity 0.3s ease;
 }
+.stuff{
+  transition: 0.8s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transform: translateY(-100%);
+  visibility:hidden;
+  opacity: 0;
+  height: 1;
+}
+.visible{
+  height: 1;
+  transform: translateY(0);
+  opacity: 1;
+  visibility:visible;
+  /* transform: scale(1); */
+}
+.hidden {
 
+  transform: translateY(-100%);
+  opacity: 0;
+  height: 0;
+  visibility:hidden;
+
+  /* transform: scale(0); */
+}
 
 
 

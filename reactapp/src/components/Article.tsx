@@ -6,17 +6,15 @@ import { useEffect, useState } from "react";
 import { Project } from "../objects/Project";
 import { fetchProjectById } from "../ProjectController";
 import styles from "./css/Article.module.css";
+import commonStyles from "./css/Common.module.css";
 import NavBar from "./NavBar";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Article() {
   const { id } = useParams();
   const [rotationAngle, setRotationAngle] = useState(0);
   console.log(id);
-  const iconMap: Record<string, IconDefinition> = {
-    gear: faGear,
-  };
+
   const no = parseInt(id?.toString() || "0");
   const [project, setProject] = useState<Project>(
     new Project(0, "Loading...", "", ["gear"])
@@ -24,7 +22,7 @@ function Article() {
 
   const renderArticle = () => {
     return (
-      <>
+      <div>
         <h1>{project.name}</h1>
         <h5>{project.description}</h5>
         <p></p>
@@ -40,7 +38,7 @@ function Article() {
         ) : (
           <img src={project.images[0]} />
         )}
-      </>
+      </div>
     );
   };
   let article = renderArticle();
@@ -96,7 +94,9 @@ function Article() {
   return (
     <>
       <NavBar />
-      <div className={styles.maindiv}>{article}</div>
+      <div className={commonStyles.background + " " + styles.maindiv}>
+        {article}
+      </div>
     </>
   );
 }
