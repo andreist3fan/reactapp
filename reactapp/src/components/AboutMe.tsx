@@ -2,7 +2,7 @@ import styles from "./css/AboutMe.module.css";
 function AboutMe() {
   return (
     <div>
-      <h3>
+      <h3 className={styles.basic}>
         I am a second year student currently studying{" "}
         <a
           className={styles.nodeco}

@@ -1,5 +1,8 @@
 .background{
-    background-color: rgb(13, 17, 35);
+    /* background-color: rgb(13, 17, 35); */
+    background-image: url("tempBg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     color: aliceblue;
     height: 100vh;
     font-family:Arial, Helvetica, sans-serif;

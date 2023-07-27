@@ -12,6 +12,7 @@ import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 function Article() {
   const { id } = useParams();
+  const [imageIndex, setImageIndex] = useState(0);
   const [rotationAngle, setRotationAngle] = useState(0);
   console.log(id);
 
@@ -19,7 +20,38 @@ function Article() {
   const [project, setProject] = useState<Project>(
     new Project(0, "Loading...", "", ["gear"])
   );
-
+  const img_carrousel = () => {
+    return (
+      <div className={styles.carrouselContainer}>
+        <div
+          onClick={() =>
+            setImageIndex((imageIndex - 1) % project.images.length)
+          }
+          className={styles.arrows}
+        >
+          {" "}
+          &#8592;{" "}
+        </div>
+        <div>
+          <img
+            src={project.images[imageIndex]}
+            onClick={() => {
+              window.open(project.images[imageIndex]);
+            }}
+          />
+        </div>
+        <div
+          className={styles.arrows}
+          onClick={() =>
+            setImageIndex((imageIndex + 1) % project.images.length)
+          }
+        >
+          {" "}
+          &#8594;{" "}
+        </div>
+      </div>
+    );
+  };
   const renderArticle = () => {
     return (
       <div>
@@ -36,7 +68,7 @@ function Article() {
             }}
           />
         ) : (
-          <img src={project.images[0]} />
+          img_carrousel()
         )}
       </div>
     );

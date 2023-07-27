@@ -5,7 +5,7 @@ import { fetchProjects, uploadProject } from "../ProjectController";
 function AddArticle() {
   const [projectsLength, setProjectLength] = useState(0);
   const [success, setSuccess] = useState(false);
-  const [selectedImage, setSelectedImage] = useState<string>();
+  const [selectedImage, setSelectedImage] = useState<string[]>();
 
   const handleImageUpload = (event) => {
     const file = event.target.files[0];
@@ -15,12 +15,12 @@ function AddArticle() {
       if (e.target !== null) {
         const imageDataURL = e.target.result?.toString();
         console.log(imageDataURL?.substring(0, 10));
-        setSelectedImage(imageDataURL);
+        const s = selectedImage?.concat(imageDataURL) || [imageDataURL];
+        setSelectedImage(s);
       }
     };
 
     reader.readAsDataURL(file);
-    console.log(selectedImage?.substring(0, 10));
   };
 
   useEffect(() => {
@@ -52,7 +52,7 @@ function AddArticle() {
           projectsLength + 1,
           title.value,
           description.value,
-          [selectedImage || ""]
+          selectedImage?.length > 0 ? selectedImage : ["gear"]
         );
 
         uploadProject(myProject);
@@ -83,8 +83,10 @@ function AddArticle() {
           <input type="file" onChange={handleImageUpload} accept="image/*" />
           {selectedImage && (
             <div>
-              <h2>Selected Image:</h2>
-              <img src={selectedImage} alt="Selected" width="100" />
+              <h2>Selected Images:</h2>
+              {selectedImage.map((image) => (
+                <img src={image} />
+              ))}
             </div>
           )}
           <br />
