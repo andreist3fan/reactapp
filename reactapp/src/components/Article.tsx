@@ -25,7 +25,9 @@ function Article() {
       <div className={styles.carrouselContainer}>
         <div
           onClick={() =>
-            setImageIndex((imageIndex - 1) % project.images.length)
+            setImageIndex(
+              (imageIndex + project.images.length - 1) % project.images.length
+            )
           }
           className={styles.arrows}
         >
