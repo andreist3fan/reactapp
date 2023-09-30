@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://desertyou.github.io/reactapp",
+  "homepage": "https://desertyou.github.io/reactapp/",
   "scripts": {
     "dev": "vite",
     "build": "vite build", 
