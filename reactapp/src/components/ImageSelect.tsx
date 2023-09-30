@@ -2,7 +2,7 @@ import { useState } from "react";
 const ImageSelect = () => {
   const [selectedImage, setSelectedImage] = useState<string>();
 
-  const handleImageUpload = (event) => {
+  const handleImageUpload = (event: any) => {
     const file = event.target.files[0];
     const reader = new FileReader();
 

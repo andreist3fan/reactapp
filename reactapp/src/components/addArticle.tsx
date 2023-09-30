@@ -7,7 +7,7 @@ function AddArticle() {
   const [success, setSuccess] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string[]>();
 
-  const handleImageUpload = (event) => {
+  const handleImageUpload = (event: any) => {
     const file = event.target.files[0];
     const reader = new FileReader();
 
@@ -15,8 +15,12 @@ function AddArticle() {
       if (e.target !== null) {
         const imageDataURL = e.target.result?.toString();
         console.log(imageDataURL?.substring(0, 10));
-        const s = selectedImage?.concat(imageDataURL) || [imageDataURL];
-        setSelectedImage(s);
+        if (imageDataURL) {
+          const foo = imageDataURL;
+
+          const s = selectedImage?.concat([foo]) || Array.of(foo);
+          setSelectedImage(s);
+        }
       }
     };
 
@@ -38,7 +42,7 @@ function AddArticle() {
 
     const form = document.getElementById("projectForm");
     if (form !== null) {
-      const handleSubmit = (event) => {
+      const handleSubmit = (event: { preventDefault: () => void }) => {
         event.preventDefault();
 
         const title = document.getElementsByName(
@@ -47,16 +51,17 @@ function AddArticle() {
         const description = document.getElementsByName(
           "description"
         )[0] as HTMLInputElement;
+        if (selectedImage != undefined) {
+          const myProject = new Project(
+            projectsLength + 1,
+            title.value,
+            description.value,
+            selectedImage?.length > 0 ? selectedImage : ["gear"]
+          );
 
-        const myProject = new Project(
-          projectsLength + 1,
-          title.value,
-          description.value,
-          selectedImage?.length > 0 ? selectedImage : ["gear"]
-        );
-
-        uploadProject(myProject);
-        uploaded();
+          uploadProject(myProject);
+          uploaded();
+        }
       };
 
       form.addEventListener("submit", handleSubmit);

@@ -6,7 +6,7 @@ const uploadProject = (project: Project) => {
   const projectsRef = ref(database, "projects");
 
   push(projectsRef, project)
-    .then((response) => {
+    .then(() => {
       console.log("Project uploaded successfully:" + project);
     })
     .catch((error) => {
