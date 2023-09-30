@@ -5,7 +5,7 @@ function NavBar() {
   return (
     <nav className="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
       <a className="navbar-brand" id={styles.foo} href="#">
-        Navbar
+        A\s
       </a>
       <button
         className="navbar-toggler"

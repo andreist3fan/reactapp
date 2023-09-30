@@ -5,7 +5,10 @@
     font-size: min(5vw,5vh);
 
 }
-
+.baseStyle{
+  padding-left: 2%;
+  padding-top: 1%;
+}
 #youtube:hover{
   color: #ff0000;
 }

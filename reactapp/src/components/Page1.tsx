@@ -6,6 +6,7 @@ import {
   faGithub,
   faYoutube,
   faFacebook,
+  faLinkedin,
 } from "@fortawesome/free-brands-svg-icons";
 function Page1() {
   // const [pageVisits, setPageVisits] = useState(0);
@@ -62,7 +63,7 @@ function Page1() {
   }, []); //<- dependency array, when something here is updated, then the method is called
   // empty array means method is called whenever ANYTHING in the component is updated.
   return (
-    <div>
+    <div className={styles.baseStyle}>
       <div
         className={styles.hello}
         onMouseEnter={() => {
@@ -84,10 +85,10 @@ function Page1() {
         <h2>
           <a
             id={styles.facebook}
-            href="https://www.google.com"
+            href="https://www.linkedin.com/in/andrei-stefan-1301a2266/"
             className={styles.anchorStyle}
           >
-            <FontAwesomeIcon icon={faFacebook} />
+            <FontAwesomeIcon icon={faLinkedin} />
           </a>
 
           <a
@@ -100,7 +101,7 @@ function Page1() {
 
           <a
             id={styles.github}
-            href="https://www.github.com"
+            href="https://www.github.com/desertyou"
             className={styles.anchorStyle}
           >
             <FontAwesomeIcon icon={faGithub} />
