@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-// import App from "./App.tsx";
+//import App from "./App.tsx";
 import AppRouter from "./AppRouter.tsx";
 import "bootstrap/dist/css/bootstrap.css";
 
