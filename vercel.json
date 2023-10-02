@@ -1,7 +1,7 @@
 {
     "routes": [
       { "src": "/", "dest": "./src/App.tsx" },
-      { "src": "/project/:id", "dest": "./src/Article.tsx" }
+      { "src": "/project/:*", "dest": "./src/Article.tsx" }
     ]
   }
   
