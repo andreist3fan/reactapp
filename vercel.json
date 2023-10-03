@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
     "routes": [
       { "src": "/", "dest": "./src/App.tsx" },
       { "src": "/project/:*", "dest": "./src/Article.tsx" }

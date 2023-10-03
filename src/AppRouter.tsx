@@ -9,10 +9,10 @@ const AppRouter: React.FC = () => {
     <Router>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="*" element={<NotFound />} />
         <Route path="/projects/:id" element={<Article />} />
         <Route path="/img" element={<ImageSelect />} />
         <Route path="/addArticle" element={<AddArticle />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
