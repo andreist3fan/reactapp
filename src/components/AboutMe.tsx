@@ -1,7 +1,8 @@
-import styles from "./css/AboutMe.module.css";
+import styles from "./css/AboutMe.module.scss";
 function AboutMe() {
   return (
     <div>
+      <h1 className={styles.basic}>About Me!</h1>
       <h3 className={styles.basic}>
         I am a second year student currently studying{" "}
         <a
@@ -10,8 +11,7 @@ function AboutMe() {
         >
           Computer Science and Engineering at TU Delft
         </a>
-        . I have a passion for trying new things out and always try to challenge
-        myself in the work that I do. Below you'll find some of my projects:
+        . I always like trying new things and learning new skills.
       </h3>
     </div>
   );

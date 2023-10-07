@@ -1,6 +1,7 @@
 .background{
     /* background-color: rgb(13, 17, 35); */
-    background-image: url("tempBg.png");
+    /*background-image: url("tempBg.png");*/
+    background-color: rgba(0, 0, 0, 0.945);
     background-repeat: repeat;
     background-size: cover;
     color: aliceblue;
